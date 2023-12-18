@@ -1,0 +1,1042 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket/"
+     xml:base="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:sample="http://www.semanticweb.org/user/ontologies/2023/11/sample#"
+     xmlns:LocalSuperMarket="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket">
+        <rdfs:comment>The LocalSupermarket ontology makes it easier to model a supermarket environment. It includes important classes like StoreSection, PaymentMethod, Employee, Promotion, Transaction, Product, and Customer. Within the context of neighbourhood supermarket operations, this ontology improves data integration and semantic comprehension. It records information on financial transactions, staff roles, marketing tactics, product inventories, and store design in addition to customer interactions. A systematic and interoperable framework for organising and accessing various supermarket-related data is ensured through the use of ontological modelling. In the supermarket industry, it acts as a fundamental tool for information organisation and analysis, promoting more effective management techniques.</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#dateTime -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#dateTime">
+        <rdfs:comment>Represents dates and times</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#float -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#float">
+        <rdfs:comment>Represents floating-point numbers</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#int -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#int">
+        <rdfs:comment>Represents whole numbers</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#string -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#string">
+        <rdfs:comment>Represents textual data</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#appliesToCategory -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#appliesToCategory">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#appliesToProduct"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Promotion"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Discount"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#appliesToProduct -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#appliesToProduct">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Promotion"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Loyalty_Program"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#belongsToCustomer -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#belongsToCustomer">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#containsProduct"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Shopping_Cart"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Online_Shopping_Cart"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#containsProduct -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#containsProduct">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Shopping_Cart"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Physical_Shopping_Cart"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasOrder -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasOrder">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#isPreferredCustomer"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Customer"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Registered_Customer"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasSectionManager -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasSectionManager">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Store_Section"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Electronic_Section"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#involvesCustomer -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#involvesCustomer">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#involvesProduct"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Transaction"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Purchase_Transaction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#involvesProduct -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#involvesProduct">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Transaction"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Return_Transaction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#isPreferredCustomer -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#isPreferredCustomer">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Customer"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Registered_Customer"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#manages -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#manages">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#reportsTo"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Employee"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Store_Manager"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#reportsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#reportsTo">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Employee"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Store_Manager"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasBrand -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasBrand">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Dairy_Product"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Fresh_Product"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Gadgets"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasCVV -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasCVV">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Credit_Card"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Debit_Card"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasCardNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasCardNumber">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Credit_Card"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Debit_Card"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasCartID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasCartID">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Online_Shopping_Cart"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Physical_Shopping_Cart"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasDiscountAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasDiscountAmount">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Discount"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasEmployeeID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasEmployeeID">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Cashier"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Shift_Manager"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Store_Manager"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasExpirationDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasExpirationDate">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Credit_Card"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Dairy_Product"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Debit_Card"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Fresh_Product"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasLoyaltyPoints -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasLoyaltyPoints">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Loyalty_Program"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasManufacturer -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasManufacturer">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Gadgets"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasMembershipLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasMembershipLevel">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Registered_Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasPhoneNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasPhoneNumber">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Registered_Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasSalary -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasSalary">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Cashier"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Shift_Manager"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Store_Manager"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasSectionCapacity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasSectionCapacity">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Dairy_Section"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Electronic_Section"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Produce_Section"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasSectionNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasSectionNumber">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Dairy_Section"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Electronic_Section"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Produce_Section"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasTotalPrice -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasTotalPrice">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Online_Shopping_Cart"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Physical_Shopping_Cart"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasTransactionAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasTransactionAmount">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Purchase_Transaction"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Return_Transaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasTransactionDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasTransactionDate">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Purchase_Transaction"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Return_Transaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasWeight -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#hasWeight">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Dairy_Product"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Fresh_Product"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Cash -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Cash">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Payment_Method"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Credit_Card"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Debit_Card"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Cashier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Cashier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Employee"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Credit_Card -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Credit_Card">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Payment_Method"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Debit_Card"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Customer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Customer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#LocalSuperMarket"/>
+        <rdfs:comment>Represents a Guest customer and 
+Registered Customer in the system.</rdfs:comment>
+        <rdfs:label>Customer</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Dairy_Product -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Dairy_Product">
+        <owl:equivalentClass rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Dairy_Section"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Product"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Fresh_Product"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Gadgets"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Dairy_Section -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Dairy_Section">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Store_Section"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Electronic_Section"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Produce_Section"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Debit_Card -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Debit_Card">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Payment_Method"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Discount -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Discount">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Promotion"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Loyalty_Program"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Electronic_Section -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Electronic_Section">
+        <owl:equivalentClass rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Gadgets"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Store_Section"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Produce_Section"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Employee -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Employee">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#LocalSuperMarket"/>
+        <rdfs:comment>Represents an employee in the store
+
+Cashier- Represents an employee responsible for processing customer transactions at the cash register
+ShiftManager- Represents an employee responsible for overseeing a specific shift, managing tasks, and assisting other employees
+StoreManager-Represents an employee in charge of overall store management, including staff supervision and customer service</rdfs:comment>
+        <rdfs:label>Employee</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Fresh_Product -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Fresh_Product">
+        <owl:equivalentClass rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Produce_Section"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Product"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Gadgets"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Gadgets -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Gadgets">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Product"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Guest_Customer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Guest_Customer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Customer"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Registered_Customer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#LocalSuperMarket -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#LocalSuperMarket"/>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Loyalty_Program -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Loyalty_Program">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Promotion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Online_Shopping_Cart -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Online_Shopping_Cart">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Shopping_Cart"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Physical_Shopping_Cart"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Payment_Method -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Payment_Method">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#LocalSuperMarket"/>
+        <rdfs:comment>Represents a method of payment used in transactions
+
+Cash-   Represents the use of physical currency (coins and banknotes) as a payment method
+CreditCard-   Represents a payment method where the cardholder can make purchases on credit
+DebitCard-    Represents a payment method where funds are directly withdrawn from the cardholder&apos;s bank account</rdfs:comment>
+        <rdfs:label>PaymentMethod</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Physical_Shopping_Cart -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Physical_Shopping_Cart">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Shopping_Cart"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Produce_Section -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Produce_Section">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Store_Section"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Product -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Product">
+        <owl:equivalentClass rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Store_Section"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#LocalSuperMarket"/>
+        <rdfs:comment>Represents a generic product available
+
+DairyProduct- Represents a product related to dairy, such as milk, cheese, or yogurt
+FreshProduce- Represents fresh and perishable products like fruits, vegetables, and other produce
+Gadgets-  Represents electronic devices or technological products that are typically small and portable</rdfs:comment>
+        <rdfs:label>Product</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Promotion -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Promotion">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#LocalSuperMarket"/>
+        <rdfs:comment>Represents a marketing initiative or incentive to encourage sales or customer loyalty
+
+Discount - Represents a promotional offer that reduces the regular price of a product or service
+
+LoyaltyProgram-Represents a program designed to reward and encourage repeat business by offering benefits to loyal customers</rdfs:comment>
+        <rdfs:label>Promotion</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Purchase_Transaction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Purchase_Transaction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Transaction"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Return_Transaction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Registered_Customer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Registered_Customer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Customer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Return_Transaction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Return_Transaction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Transaction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Shift_Manager -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Shift_Manager">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Employee"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Shopping_Cart -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Shopping_Cart">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#LocalSuperMarket"/>
+        <rdfs:comment>Represents a container for holding selected products during a shopping session
+
+OnlineShoppingCart- Represents a shopping cart used for online shopping, typically associated with e-commerce websites
+
+PhysicalShoppingCart-Represents a physical cart or basket used by customers in some stores for in-person shopping</rdfs:comment>
+        <rdfs:label>Shopping_Cart</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Store_Manager -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Store_Manager">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Employee"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Store_Section -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Store_Section">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#LocalSuperMarket"/>
+        <rdfs:comment>Represents a section within a store where products are organized and displayed
+
+DairySection- Represents a store section dedicated to dairy products such as milk, cheese, and yogurt
+
+ProduceSection- Represents a store section dedicated to fresh produce, including fruits and vegetables
+
+ElectronicSection- Represents a store section dedicated to electronic products and gadgets</rdfs:comment>
+        <rdfs:label>Store_Section</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Transaction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Transaction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#LocalSuperMarket"/>
+        <rdfs:comment>Represents a financial transaction involving the exchange of goods or services
+
+PurchaseTransaction - Represents a transaction where a customer buys goods or services from a store
+
+ReturnTransaction - Represents a transaction where a customer returns previously purchased goods or services to a store</rdfs:comment>
+        <rdfs:label>Transaction</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Apple -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Apple">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Fresh_Product"/>
+        <LocalSuperMarket:hasBrand>IndoAppleFarms</LocalSuperMarket:hasBrand>
+        <LocalSuperMarket:hasExpirationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-02T18:45:00</LocalSuperMarket:hasExpirationDate>
+        <LocalSuperMarket:hasWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.5</LocalSuperMarket:hasWeight>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#CashPayment -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#CashPayment">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Cash"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#CashRegister1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#CashRegister1"/>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Clothing -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Clothing"/>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#CreditCardPayment -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#CreditCardPayment">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Credit_Card"/>
+        <LocalSuperMarket:hasCVV>345</LocalSuperMarket:hasCVV>
+        <LocalSuperMarket:hasCardNumber>1234-4567-5678-9999</LocalSuperMarket:hasCardNumber>
+        <LocalSuperMarket:hasExpirationDate>23/25</LocalSuperMarket:hasExpirationDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Customer4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Customer4"/>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#DairyAisle -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#DairyAisle">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Dairy_Section"/>
+        <LocalSuperMarket:hasSectionManager rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Lauren"/>
+        <LocalSuperMarket:hasSectionCapacity rdf:datatype="http://www.w3.org/2001/XMLSchema#int">45</LocalSuperMarket:hasSectionCapacity>
+        <LocalSuperMarket:hasSectionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#int">2</LocalSuperMarket:hasSectionNumber>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#DebitCardPayment -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#DebitCardPayment">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Debit_Card"/>
+        <LocalSuperMarket:hasCVV>677</LocalSuperMarket:hasCVV>
+        <LocalSuperMarket:hasCardNumber>2341-2345-9809-7777</LocalSuperMarket:hasCardNumber>
+        <LocalSuperMarket:hasExpirationDate>23/26</LocalSuperMarket:hasExpirationDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Discount1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Discount1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Discount"/>
+        <LocalSuperMarket:appliesToProduct rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Product123"/>
+        <LocalSuperMarket:hasDiscountAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">10.0</LocalSuperMarket:hasDiscountAmount>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Discount2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Discount2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Discount"/>
+        <LocalSuperMarket:appliesToCategory rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Electronics"/>
+        <LocalSuperMarket:hasDiscountAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">25.0</LocalSuperMarket:hasDiscountAmount>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Electronics -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Electronics"/>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#ElectronicsDepartment -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#ElectronicsDepartment">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Electronic_Section"/>
+        <LocalSuperMarket:hasSectionManager rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Lauren"/>
+        <LocalSuperMarket:hasSectionCapacity rdf:datatype="http://www.w3.org/2001/XMLSchema#int">76</LocalSuperMarket:hasSectionCapacity>
+        <LocalSuperMarket:hasSectionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#int">4</LocalSuperMarket:hasSectionNumber>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Jordan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Jordan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Store_Manager"/>
+        <LocalSuperMarket:manages rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#StoreInventory"/>
+        <LocalSuperMarket:hasEmployeeID>45678</LocalSuperMarket:hasEmployeeID>
+        <LocalSuperMarket:hasSalary rdf:datatype="http://www.w3.org/2001/XMLSchema#float">5000.0</LocalSuperMarket:hasSalary>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Laptop -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Laptop">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Gadgets"/>
+        <LocalSuperMarket:hasBrand>LLED</LocalSuperMarket:hasBrand>
+        <LocalSuperMarket:hasManufacturer>LLEDManufaturer</LocalSuperMarket:hasManufacturer>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Lauren -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Lauren">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Shift_Manager"/>
+        <LocalSuperMarket:manages rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#ShiftSchedule1"/>
+        <LocalSuperMarket:reportsTo rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#StoreManager1"/>
+        <LocalSuperMarket:hasEmployeeID>223344</LocalSuperMarket:hasEmployeeID>
+        <LocalSuperMarket:hasSalary rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4000.0</LocalSuperMarket:hasSalary>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#LoyaltyProgram1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#LoyaltyProgram1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Loyalty_Program"/>
+        <LocalSuperMarket:appliesToProduct rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Product454"/>
+        <LocalSuperMarket:hasLoyaltyPoints rdf:datatype="http://www.w3.org/2001/XMLSchema#int">34</LocalSuperMarket:hasLoyaltyPoints>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#LoyaltyProgram2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#LoyaltyProgram2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Loyalty_Program"/>
+        <LocalSuperMarket:appliesToCategory rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Clothing"/>
+        <LocalSuperMarket:hasLoyaltyPoints rdf:datatype="http://www.w3.org/2001/XMLSchema#int">25</LocalSuperMarket:hasLoyaltyPoints>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Mike -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Mike">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Registered_Customer"/>
+        <LocalSuperMarket:hasOrder rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Order5678"/>
+        <LocalSuperMarket:isPreferredCustomer rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Mike"/>
+        <LocalSuperMarket:hasMembershipLevel>Gold</LocalSuperMarket:hasMembershipLevel>
+        <LocalSuperMarket:hasPhoneNumber>+44-73840-45678</LocalSuperMarket:hasPhoneNumber>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Milk -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Milk">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Dairy_Product"/>
+        <LocalSuperMarket:hasBrand>AavinDairy</LocalSuperMarket:hasBrand>
+        <LocalSuperMarket:hasExpirationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-02T18:45:00</LocalSuperMarket:hasExpirationDate>
+        <LocalSuperMarket:hasWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1</LocalSuperMarket:hasWeight>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#OnlineCart1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#OnlineCart1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Online_Shopping_Cart"/>
+        <LocalSuperMarket:belongsToCustomer rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Rekha"/>
+        <LocalSuperMarket:containsProduct rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Laptop"/>
+        <LocalSuperMarket:hasCartID>LP345</LocalSuperMarket:hasCartID>
+        <LocalSuperMarket:hasTotalPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1400</LocalSuperMarket:hasTotalPrice>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Order4567 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Order4567"/>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Order5678 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Order5678"/>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#PhysicalCart1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#PhysicalCart1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Physical_Shopping_Cart"/>
+        <LocalSuperMarket:belongsToCustomer rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Mike"/>
+        <LocalSuperMarket:containsProduct rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Milk"/>
+        <LocalSuperMarket:hasCartID>M67</LocalSuperMarket:hasCartID>
+        <LocalSuperMarket:hasTotalPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.0</LocalSuperMarket:hasTotalPrice>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#ProduceAisle -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#ProduceAisle">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Produce_Section"/>
+        <LocalSuperMarket:hasSectionManager rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Jordan"/>
+        <LocalSuperMarket:hasSectionCapacity rdf:datatype="http://www.w3.org/2001/XMLSchema#int">65</LocalSuperMarket:hasSectionCapacity>
+        <LocalSuperMarket:hasSectionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</LocalSuperMarket:hasSectionNumber>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Product123 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Product123"/>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Product454 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Product454"/>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#PurchaseTransaction1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#PurchaseTransaction1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Purchase_Transaction"/>
+        <LocalSuperMarket:involvesCustomer rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Customer4"/>
+        <LocalSuperMarket:involvesProduct rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Product454"/>
+        <LocalSuperMarket:hasTransactionAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">12.0</LocalSuperMarket:hasTransactionAmount>
+        <LocalSuperMarket:hasTransactionDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-02T18:45:00</LocalSuperMarket:hasTransactionDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#PurchaseTransaction2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#PurchaseTransaction2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Purchase_Transaction"/>
+        <LocalSuperMarket:involvesCustomer rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Customer4"/>
+        <LocalSuperMarket:involvesProduct rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Product123"/>
+        <LocalSuperMarket:hasTransactionAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">125.0</LocalSuperMarket:hasTransactionAmount>
+        <LocalSuperMarket:hasTransactionDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-02T18:35:00</LocalSuperMarket:hasTransactionDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Rekha -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Rekha">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Guest_Customer"/>
+        <LocalSuperMarket:hasOrder rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Order4567"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Rekha1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Rekha1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Cashier"/>
+        <LocalSuperMarket:manages rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#CashRegister1"/>
+        <LocalSuperMarket:hasEmployeeID>119821</LocalSuperMarket:hasEmployeeID>
+        <LocalSuperMarket:hasSalary rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2000.0</LocalSuperMarket:hasSalary>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#ReturnTransaction1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#ReturnTransaction1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Return_Transaction"/>
+        <LocalSuperMarket:involvesProduct rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Product123"/>
+        <LocalSuperMarket:hasTransactionAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">35.0</LocalSuperMarket:hasTransactionAmount>
+        <LocalSuperMarket:hasTransactionDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-01T12:30:00</LocalSuperMarket:hasTransactionDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#ReturnTransaction2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#ReturnTransaction2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Return_Transaction"/>
+        <LocalSuperMarket:involvesProduct rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Product454"/>
+        <LocalSuperMarket:hasTransactionAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">10.0</LocalSuperMarket:hasTransactionAmount>
+        <LocalSuperMarket:hasTransactionDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-02T12:30:00</LocalSuperMarket:hasTransactionDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#ShiftSchedule1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#ShiftSchedule1"/>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#SmartPhone -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#SmartPhone">
+        <rdf:type rdf:resource="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Gadgets"/>
+        <LocalSuperMarket:hasBrand>Apple</LocalSuperMarket:hasBrand>
+        <LocalSuperMarket:hasManufacturer>XXXManufaturer</LocalSuperMarket:hasManufacturer>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#StoreInventory -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#StoreInventory"/>
+    
+
+
+    <!-- http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#StoreManager1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#StoreManager1"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Cashier"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Shift_Manager"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/user/ontologies/2023/11/LocalSuperMarket#Store_Manager"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+
